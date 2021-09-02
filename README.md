@@ -1,0 +1,1 @@
+This is my final project from the foundations section of TOP. This project requires me to combine everything I've learned so far: I'm going to make an on-screen calculator using JavaScript, HTML, and CSS.
