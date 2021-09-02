@@ -13,6 +13,7 @@ html, body {
     width: 100vw;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #title {
@@ -21,12 +22,46 @@ html, body {
 
 #calculator {
     border: 5px solid yellow;
+    width: 500px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 #display {
     border: 5px solid red;
+    flex-grow: 1;
 }
 
 #interface {
     border: 5px solid black;
+    padding: 20px;
+    flex-grow: 4;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    border: 5px solid pink;
+    margin: 5px;
+    flex-grow: 1;
+    display: flex;
+}
+
+button {
+    border: 5px solid green;
+    margin: 5px;
+    flex-grow: 1;
+}
+
+.button1 {
+    flex-grow: 2.5;
+}
+
+button:hover {
+    background: gray;
+}
+
+button:active {
+    background: black;
 }
