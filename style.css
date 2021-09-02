@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Calculator;
+    src: url(fonts/Calculator.woff2) format('woff2');
+}
+
 * {
     box-sizing: border-box;
 }
@@ -30,7 +35,15 @@ html, body {
 
 #display {
     border: 5px solid red;
+    display: flex;
+    flex-direction: row-reverse;
     flex-grow: 1;
+}
+
+p {
+    margin: 0px;
+    font-family: Calculator;
+    font-size: 80px;
 }
 
 #interface {
