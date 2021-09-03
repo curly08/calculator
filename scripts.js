@@ -25,3 +25,16 @@ function operate(operator, x, y) {
         divide(x, y);
     }
 }
+
+//initialize variables
+let input;
+
+// //add onclick event listeners to buttons and store value in variable
+const buttons = document.querySelectorAll('.button');
+buttons.forEach(item => {
+    item.addEventListener('click', function() {
+        input = item.value;
+        console.log(input);
+    });
+});
+
