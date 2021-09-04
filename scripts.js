@@ -27,14 +27,17 @@ function operate(operator, x, y) {
 }
 
 //initialize variables
-let input;
+let input = '';
 
 // //add onclick event listeners to buttons and store value in variable
 const buttons = document.querySelectorAll('.button');
+const displayValue = document.querySelector('#display-value');
 buttons.forEach(item => {
     item.addEventListener('click', function() {
-        input = item.value;
-        console.log(input);
+        if (input < 100000000) {
+            input += item.value;
+            displayValue.textContent = input;
+            console.log(input);
+        }
     });
 });
-
