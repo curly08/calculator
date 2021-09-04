@@ -26,17 +26,23 @@ function operate(operator, x, y) {
     }
 }
 
-//initialize variables
-let input = '';
+//remove decimal button after used once
+const bottomRow = document.getElementById('bottom-row');
+const decbutton = document.getElementById('decbutton');
+decbutton.addEventListener('click', function() {
+    bottomRow.removeChild(decbutton);
+});
 
-// //add onclick event listeners to buttons and store value in variable
-const buttons = document.querySelectorAll('.button');
+//add onclick event listeners to numbuttons and display value in calc display
+const numbuttons = document.querySelectorAll('.numbutton');
 const displayValue = document.querySelector('#display-value');
-buttons.forEach(item => {
+let input = '';
+numbuttons.forEach(item => {
     item.addEventListener('click', function() {
-        if (input < 100000000) {
+        if (input.length < 9) {
             input += item.value;
             displayValue.textContent = input;
+            parseFloat(input);
             console.log(input);
         }
     });
