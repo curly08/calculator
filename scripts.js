@@ -79,6 +79,9 @@ function concatInput() {
             decbutton.removeEventListener('click', concatInput);
         }
     }
+    if (operator != '' && x != 0) {
+        equalsbutton.addEventListener('click', calculate);
+    }
     opbuttons.forEach(item => {
         item.addEventListener('click', getOperator)
     });
@@ -95,12 +98,11 @@ function getOperator() {
         x = parseFloat(input);
         operator = this.value;
         displayValue.textContent = operator;
-        opbuttons.forEach(item => {
-            item.removeEventListener('click', getOperator)
-        });
     }
+    opbuttons.forEach(item => {
+        item.removeEventListener('click', getOperator)
+    });
     decbutton.addEventListener('click', concatInput);
-    equalsbutton.addEventListener('click', calculate);
     input = '';
 }
 
@@ -123,13 +125,3 @@ function calculate() {
 numbuttons.forEach(item => {
     item.addEventListener('click', concatInput)
 });
-
-//add onclick event listeners to opbuttons and store input in x
-opbuttons.forEach(item => {
-    item.addEventListener('click', getOperator)
-});
-
-//add onclick event listener for equals and store input in y
-equalsbutton.addEventListener('click', calculate);
-
-//bugs when operator or equals button are clicked before numbers
