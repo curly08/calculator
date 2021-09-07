@@ -38,12 +38,36 @@ function formatExponential(result) {
     return stringNotationless.concat(notation);
 }
 
+//function to round big numbers with long decimal trails appropriately
+//can this be 
+function round(result) {
+    if (result > 99999999 && result <= 999999999) {
+        return Math.round(result * 100) / 100;
+    } else if (result > 9999999 && result <= 99999999) {
+        return Math.round(result * 100) / 100;
+    } else if (result > 999999 && result <= 9999999) {
+        return Math.round(result * 100) / 100;
+    } else if (result > 99999 && result <= 999999) {
+        return Math.round(result * 100) / 100;
+    } else if (result > 9999 && result <= 99999) {
+        return Math.round(result * 1000) / 1000;
+    } else if (result > 999 && result <= 9999) {
+        return Math.round(result * 10000) / 10000;
+    } else if (result > 99 && result <= 999) {
+        return Math.round(result * 100000) / 100000;
+    } else if (result > 9 && result <= 99) {
+        return Math.round(result * 1000000) / 1000000;
+    } else if (result > 0 && result <= 9) {
+        return Math.round(result * 10000000) / 10000000;
+    }
+}
+
 //function for displaying result
 function displayResult(result) {
     if (result > 999999999) {
         displayValue.textContent = formatExponential(result);
     } else if (result.toString().length > 9) {
-        displayValue.textContent = Math.round(result * 10000000) / 10000000;
+        displayValue.textContent = round(result);
     } else {
         displayValue.textContent = result;
     }
@@ -110,9 +134,9 @@ function getOperator() {
 function calculate() {
     y = parseFloat(input);
     input = ''; //move to operate?
-    console.log(x);
-    console.log(operator);
-    console.log(y);
+    // console.log(x);
+    // console.log(operator);
+    // console.log(y);
     operate(operator, x, y);
     operator = ''; //move to operate?
     opbuttons.forEach(item => {
