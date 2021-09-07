@@ -1,3 +1,15 @@
+//initialize variables
+const numbuttons = document.querySelectorAll('.numbutton');
+const displayValue = document.querySelector('#display-value');
+const decbutton = document.getElementById('decimal-button');
+const opbuttons = document.querySelectorAll('.opbutton');
+const equalsbutton = document.getElementById('equals-button');
+let input = '';
+let result = '';
+let x;
+let y = '';
+let operator = '';
+
 //operation functions
 function add(x, y) {
     return x + y;
@@ -15,21 +27,15 @@ function divide(x, y) {
     return x / y;
 }
 
-//function to calculate and display result
-function operate(operator, x, y) {
-    if (operator == 'add') {
-        input = add(x, y);
-        displayResult(input);
-    } else if (operator == 'subtract') {
-        input = subtract(x, y);
-        displayResult(input);
-    } else if (operator == 'multiply') {
-        input = multiply(x, y);
-        displayResult(input);
-    } else if (operator == 'divide') {
-        input = divide(x, y);
-        displayResult(input);
-    }
+//function to format exponential numbers
+function formatExponential(result) {
+    result = result.toExponential();
+    let index = result.indexOf('e');
+    let notation = result.substr(index);
+    let notationless = result.substr(0, index);
+    let fixedNotationless = Number.parseFloat(notationless).toFixed(5);
+    let stringNotationless = String(fixedNotationless);
+    return stringNotationless.concat(notation);
 }
 
 //function for displaying result
@@ -43,29 +49,26 @@ function displayResult(result) {
     }
 }
 
-//function to format exponential numbers
-function formatExponential(result) {
-    result = result.toExponential();
-    let index = result.indexOf('e');
-    let notation = result.substr(index);
-    let notationless = result.substr(0, index);
-    let fixedNotationless = Number.parseFloat(notationless).toFixed(5);
-    let stringNotationless = String(fixedNotationless);
-    return stringNotationless.concat(notation);
+//function to calculate and display result
+function operate(operator, x, y) {
+    if (operator == 'add') {
+        input = add(x, y);
+        result = input;
+        displayResult(input);
+    } else if (operator == 'subtract') {
+        input = subtract(x, y);
+        result = input;
+        displayResult(input);
+    } else if (operator == 'multiply') {
+        input = multiply(x, y);
+        result = input;
+        displayResult(input);
+    } else if (operator == 'divide') {
+        input = divide(x, y);
+        result = input;
+        displayResult(input);
+    }
 }
-
-//add onclick event listeners to numbuttons and display value in calc display
-const numbuttons = document.querySelectorAll('.numbutton');
-const displayValue = document.querySelector('#display-value');
-const decbutton = document.getElementById('decimal-button');
-let input = '';
-let x;
-let y;
-let operator;
-
-numbuttons.forEach(item => {
-    item.addEventListener('click', concatInput)
-});
 
 //concat function
 function concatInput() {
@@ -76,32 +79,57 @@ function concatInput() {
             decbutton.removeEventListener('click', concatInput);
         }
     }
+    opbuttons.forEach(item => {
+        item.addEventListener('click', getOperator)
+    });
 }
 
-//add onclick event listeners to opbuttons and store input in x
-const opbuttons = document.querySelectorAll('.opbutton');
-opbuttons.forEach(item => {
-    item.addEventListener('click', function getOperator() {
-        // //conditional when operator functions as equals button
-        // if {
-
-        // }
-        decbutton.addEventListener('click', concatInput);
-        operator = item.value;
-        displayValue.textContent = operator;
+//getOperator function
+function getOperator() {
+    if (operator != '') {
+        y = parseFloat(input);
+        calculate();
+        x = result;
+        operator = this.value;
+    } else {
         x = parseFloat(input);
-        input = '';
-        return operator;
-    });
-});
-
-//add onclick event listener for equals and store input in y
-const equalsbutton = document.getElementById('equals-button');
-equalsbutton.addEventListener('click', function calculate() {
-    y = parseFloat(input);
+        operator = this.value;
+        displayValue.textContent = operator;
+        opbuttons.forEach(item => {
+            item.removeEventListener('click', getOperator)
+        });
+    }
+    decbutton.addEventListener('click', concatInput);
+    equalsbutton.addEventListener('click', calculate);
     input = '';
+}
+
+//calculate function
+function calculate() {
+    y = parseFloat(input);
+    input = ''; //move to operate?
     console.log(x);
     console.log(operator);
     console.log(y);
     operate(operator, x, y);
+    operator = ''; //move to operate?
+    opbuttons.forEach(item => {
+        item.addEventListener('click', getOperator)
+    });
+    equalsbutton.removeEventListener('click', calculate);
+}
+
+//add onclick event listeners to numbuttons and display value in calc display
+numbuttons.forEach(item => {
+    item.addEventListener('click', concatInput)
 });
+
+//add onclick event listeners to opbuttons and store input in x
+opbuttons.forEach(item => {
+    item.addEventListener('click', getOperator)
+});
+
+//add onclick event listener for equals and store input in y
+equalsbutton.addEventListener('click', calculate);
+
+//bugs when operator or equals button are clicked before numbers
