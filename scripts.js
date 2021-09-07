@@ -5,6 +5,7 @@ const decButton = document.getElementById('decimal-button');
 const opButtons = document.querySelectorAll('.opbutton');
 const equalsButton = document.getElementById('equals-button');
 const clearButton = document.getElementById('clear-button');
+const deleteButton = document.getElementById('delete-button');
 let input = '';
 let result = '';
 let x;
@@ -94,6 +95,16 @@ function operate(operator, x, y) {
     }
 }
 
+//delete function
+function backspaceInput() {
+    input = input.substring(0, input.length - 1);
+    if (input == '' || input == 0) {
+        input = 0;
+        deleteButton.removeEventListener('click', backspaceInput);
+    }
+    displayValue.textContent = input;
+}
+
 //concat function
 function concatInput() {
     if (input.length < 9) {
@@ -109,6 +120,8 @@ function concatInput() {
     opButtons.forEach(item => {
         item.addEventListener('click', getOperator)
     });
+    //add onclick event listener to delete button
+    deleteButton.addEventListener('click', backspaceInput);
 }
 
 //getOperator function
