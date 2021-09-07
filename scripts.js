@@ -1,9 +1,10 @@
 //initialize variables
-const numbuttons = document.querySelectorAll('.numbutton');
+const numButtons = document.querySelectorAll('.numbutton');
 const displayValue = document.querySelector('#display-value');
-const decbutton = document.getElementById('decimal-button');
-const opbuttons = document.querySelectorAll('.opbutton');
-const equalsbutton = document.getElementById('equals-button');
+const decButton = document.getElementById('decimal-button');
+const opButtons = document.querySelectorAll('.opbutton');
+const equalsButton = document.getElementById('equals-button');
+const clearButton = document.getElementById('clear-button');
 let input = '';
 let result = '';
 let x;
@@ -39,7 +40,6 @@ function formatExponential(result) {
 }
 
 //function to round big numbers with long decimal trails appropriately
-//can this be 
 function round(result) {
     if (result > 99999999 && result <= 999999999) {
         return Math.round(result * 100) / 100;
@@ -100,13 +100,13 @@ function concatInput() {
         input += this.value;
         displayValue.textContent = input;
         if (input.includes('.')) {
-            decbutton.removeEventListener('click', concatInput);
+            decButton.removeEventListener('click', concatInput);
         }
     }
     if (operator != '' && x != 0) {
-        equalsbutton.addEventListener('click', calculate);
+        equalsButton.addEventListener('click', calculate);
     }
-    opbuttons.forEach(item => {
+    opButtons.forEach(item => {
         item.addEventListener('click', getOperator)
     });
 }
@@ -123,10 +123,10 @@ function getOperator() {
         operator = this.value;
         displayValue.textContent = operator;
     }
-    opbuttons.forEach(item => {
+    opButtons.forEach(item => {
         item.removeEventListener('click', getOperator)
     });
-    decbutton.addEventListener('click', concatInput);
+    decButton.addEventListener('click', concatInput);
     input = '';
 }
 
@@ -139,13 +139,31 @@ function calculate() {
     // console.log(y);
     operate(operator, x, y);
     operator = ''; //move to operate?
-    opbuttons.forEach(item => {
+    opButtons.forEach(item => {
         item.addEventListener('click', getOperator)
     });
-    equalsbutton.removeEventListener('click', calculate);
+    equalsButton.removeEventListener('click', calculate);
+}
+
+//clear all function
+function clear() {
+    x = '';
+    y = '';
+    input = '';
+    result = '';
+    operator = '';
+    equalsButton.removeEventListener('click', calculate);
+    decButton.addEventListener('click', concatInput);
+    opButtons.forEach(item => {
+        item.removeEventListener('click', getOperator)
+    });
+    displayValue.textContent = 'clear';
 }
 
 //add onclick event listeners to numbuttons and display value in calc display
-numbuttons.forEach(item => {
+numButtons.forEach(item => {
     item.addEventListener('click', concatInput)
 });
+
+//add onclick event listener to clear button
+clearButton.addEventListener('click', clear);
