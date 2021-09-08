@@ -1,4 +1,5 @@
 //initialize variables
+const buttons = document.querySelectorAll('button');
 const numButtons = document.querySelectorAll('.numbutton');
 const displayValue = document.querySelector('#display-value');
 const decButton = document.getElementById('.');
@@ -225,16 +226,30 @@ numButtons.forEach(item => {
 //add onclick event listener to clear button
 clearButton.addEventListener('click', clear);
 
-//keyboard support
+//keyboard support and style changes
 document.addEventListener('keydown', event => {
     if (event.key === '=') {
         event.preventDefault();
         document.getElementById('Enter').click();
+        document.getElementById('Enter').style.background = 'black';
     } else {
         keys.forEach(item => {
             if (event.key === item) {
                 event.preventDefault();
                 document.getElementById(item).click();
+                document.getElementById(item).style.background = 'black';
+            }
+        })
+    }
+});
+
+document.addEventListener('keyup', event => {
+    if (event.key === '=') {
+        document.getElementById('Enter').style.background = '';
+    } else {
+        keys.forEach(item => {
+            if (event.key === item) {
+                document.getElementById(item).style.background = '';
             }
         })
     }
