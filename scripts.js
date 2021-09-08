@@ -157,7 +157,7 @@ function concatInput() {
             decButton.removeEventListener('click', concatInput);
         }
     }
-    if (operator != '' && x != 0) {
+    if (operator != '') {
         equalsButton.addEventListener('click', calculate);
     }
     opButtons.forEach(item => {
