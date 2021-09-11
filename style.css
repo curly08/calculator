@@ -1,43 +1,65 @@
-@font-face {
-    font-family: Calculator;
-    src: url(fonts/Calculator.woff2) format('woff2');
-}
-
-* {
+html {
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
-#container {
-    border: 5px solid green;
+body {
     height: 100vh;
     width: 100vw;
+    margin: 0;
+    background-image: url(img/sun4_generated.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;   
+}
+
+@font-face {
+    font-family: Calculator;
+    src: url('fonts/Calculator.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: Retro;
+    src: url('fonts/RetrokingRegular.woff2') format('woff2');
 }
 
 #title {
-    border: 5px solid blue;
+    font-family: Retro;
+    font-size: 48px;
+    color: rgb(105, 20, 112);
+    margin: -50px 0px;
 }
 
 #calculator {
-    border: 5px solid yellow;
-    width: 500px;
-    flex-grow: 1;
+    background-color: rgb(109, 71, 0);
+    /* height: 400px;
+    width: 400px; */
+    /* flex-grow: 1; */
     display: flex;
     flex-direction: column;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+#display-rim {
+    background-color: orange;
+    border-radius: 15px;
+    padding: 10px
 }
 
 #display {
-    border: 5px solid red;
     display: flex;
     flex-direction: row-reverse;
     flex-grow: 1;
+    background-color: rgb(74, 74, 240);
+    border-radius: 15px;
 }
 
 p {
@@ -47,7 +69,6 @@ p {
 }
 
 #interface {
-    border: 5px solid black;
     padding: 20px;
     flex-grow: 4;
     display: flex;
@@ -77,4 +98,26 @@ button:hover {
 
 button:active {
     background: black;
+}
+
+.footer {
+    display: flex;
+    background-color: rgb(252, 82, 21);
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    padding: 15px;
+}
+
+#mark {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    filter: brightness(.9);
+}
+
+#github-logo {
+    height: 15px;
 }
