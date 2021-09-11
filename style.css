@@ -39,8 +39,8 @@ body {
 
 #calculator {
     background-color: rgb(109, 71, 0);
-    /* height: 400px;
-    width: 400px; */
+    height: 550px;
+    width: 400px;
     /* flex-grow: 1; */
     display: flex;
     flex-direction: column;
@@ -58,14 +58,14 @@ body {
     display: flex;
     flex-direction: row-reverse;
     flex-grow: 1;
-    background-color: rgb(74, 74, 240);
+    background-color: rgba(133, 133, 252, 0.795);
     border-radius: 15px;
 }
 
 p {
     margin: 0px;
     font-family: Calculator;
-    font-size: 80px;
+    font-size: 60px;
 }
 
 #interface {
@@ -73,27 +73,29 @@ p {
     flex-grow: 4;
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 .row {
-    border: 5px solid pink;
-    margin: 5px;
     flex-grow: 1;
     display: flex;
 }
 
 button {
-    border: 5px solid green;
+    background-color: orange;
+    border: none;
+    border-radius: 20px;
+    padding: 5px;
     margin: 5px;
     flex-grow: 1;
 }
 
-.button1 {
-    flex-grow: 2.5;
+.special-button  {
+    background-color: rgb(255, 74, 19);
 }
 
 button:hover {
-    background: gray;
+    background-color: gray;
 }
 
 button:active {
@@ -102,7 +104,7 @@ button:active {
 
 .footer {
     display: flex;
-    background-color: rgb(252, 82, 21);
+    background-color: rgba(252, 83, 21, 0.945);
     align-items: center;
     justify-content: center;
     align-self: stretch;
@@ -115,6 +117,9 @@ button:active {
     align-items: center;
     text-decoration: none;
     color: rgb(255, 255, 255);
+    font-family: Retro;
+    font-size: 18px;
+    font-weight: 100;
     filter: brightness(.9);
 }
 
