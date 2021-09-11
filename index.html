@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="author" content="Matt Noakes">
         <meta name="description" content="Functioning Calculator">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,45 +10,48 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div id="container">
-            <!-- <div id="title">
-                <h1>Time to Calculate!</h1>
-            </div> -->
-            <div id="calculator">
+        <div id="title">
+            <h1>Let's Get Groovy</h1>
+        </div>
+        <div id="calculator">
+            <div id="display-rim">
                 <div id="display">
                     <p id="display-value">awaiting input...</p>
                 </div>
-                <div id="interface">
-                    <div class="row">
-                        <button id="Escape" class="button" type="button" value="clear">AC</button>
-                        <button id="Backspace" class="button" type="button" value="delete">DEL</button>
-                        <button id="/" class="opbutton" type="button" value="divide">/</button>
-                    </div>
-                    <div class="row">
-                        <button id="7" class="numbutton" type="button" value="7">7</button>
-                        <button id="8" class="numbutton" type="button" value="8">8</button>
-                        <button id="9" class="numbutton" type="button" value="9">9</button>
-                        <button id="*" class="opbutton" type="button" value="multiply">*</button>
-                    </div>
-                    <div class="row">
-                        <button id="4" class="numbutton" type="button" value="4">4</button>
-                        <button id="5" class="numbutton" type="button" value="5">5</button>
-                        <button id="6" class="numbutton" type="button" value="6">6</button>
-                        <button id="-" class="opbutton" type="button" value="subtract">-</button>
-                    </div>
-                    <div class="row">
-                        <button id="1" class="numbutton" type="button" value="1">1</button>
-                        <button id="2" class="numbutton" type="button" value="2">2</button>
-                        <button id="3" class="numbutton" type="button" value="3">3</button>
-                        <button id="+" class="opbutton" type="button" value="add">+</button>
-                    </div>
-                    <div id="bottom-row" class="row">
-                        <button id="0" class="numbutton" type="button" value="0">0</button>
-                        <button id="." class="numbutton" type="button" value=".">.</button>
-                        <button id="Enter" class="button" type="button" value="equals">=</button>
-                    </div>
+            </div>
+            <div id="interface">
+                <div class="row">
+                    <button id="Escape" class="button" type="button" value="clear">AC</button>
+                    <button id="Backspace" class="button" type="button" value="delete">DEL</button>
+                    <button id="/" class="opbutton" type="button" value="divide">/</button>
+                </div>
+                <div class="row">
+                    <button id="7" class="numbutton" type="button" value="7">7</button>
+                    <button id="8" class="numbutton" type="button" value="8">8</button>
+                    <button id="9" class="numbutton" type="button" value="9">9</button>
+                    <button id="*" class="opbutton" type="button" value="multiply">*</button>
+                </div>
+                <div class="row">
+                    <button id="4" class="numbutton" type="button" value="4">4</button>
+                    <button id="5" class="numbutton" type="button" value="5">5</button>
+                    <button id="6" class="numbutton" type="button" value="6">6</button>
+                    <button id="-" class="opbutton" type="button" value="subtract">-</button>
+                </div>
+                <div class="row">
+                    <button id="1" class="numbutton" type="button" value="1">1</button>
+                    <button id="2" class="numbutton" type="button" value="2">2</button>
+                    <button id="3" class="numbutton" type="button" value="3">3</button>
+                    <button id="+" class="opbutton" type="button" value="add">+</button>
+                </div>
+                <div id="bottom-row" class="row">
+                    <button id="0" class="numbutton" type="button" value="0">0</button>
+                    <button id="." class="numbutton" type="button" value=".">.</button>
+                    <button id="Enter" class="button" type="button" value="equals">=</button>
                 </div>
             </div>
+        </div>
+        <div class="footer">
+            <a id="mark" href="https://github.com/curly08"><img id="github-logo" src="img/GitHub-Mark-Light-120px-plus.png" alt="Github logo">curly08</a>
         </div>
     </body>
     <script type="text/javascript" src="scripts.js"></script>
