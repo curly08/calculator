@@ -1,3 +1,4 @@
+/* bug: when window is resized, scrollbars appear */
 html {
     box-sizing: border-box;
     
