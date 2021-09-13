@@ -1,6 +1,6 @@
 html {
     box-sizing: border-box;
-    font-family: sans-serif;
+    
 }
 
 *, *:before, *:after {
@@ -11,13 +11,17 @@ body {
     height: 100vh;
     width: 100vw;
     margin: 0;
-    background-image: url(img/sun4_generated.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;   
+    justify-content: space-between;
+    background: url(img/sun4_generated.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    gap: 20px;
 }
 
 @font-face {
@@ -32,27 +36,29 @@ body {
 
 #title {
     font-family: Retro;
-    font-size: 48px;
+    font-size: 40px;
+    text-align: center;
     text-shadow: 2px 0 0 white, -2px 0 0 white, 0 2px 0 white, 0 -2px 0 white, 1px 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
     color: rgb(105, 20, 112);
-    margin: -50px 0px;
+    margin: -20px 0px -50px 0px;
 }
 
 #calculator {
     background-color: rgb(109, 71, 0);
-    height: 550px;
     width: 400px;
-    /* flex-grow: 1; */
     display: flex;
     flex-direction: column;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 30px;
+    gap: 20px;
+    border: 1px solid black;
 }
 
 #display-rim {
     background-color: orange;
-    border-radius: 15px;
-    padding: 10px
+    border-radius: 22px;
+    padding: 10px;
+    border: 1px solid black;
 }
 
 #display {
@@ -61,16 +67,17 @@ body {
     flex-grow: 1;
     background-color: rgba(133, 133, 252, 0.795);
     border-radius: 15px;
+    padding: 10px;
+    border: 1px solid black;
 }
 
 p {
     margin: 0px;
     font-family: Calculator;
-    font-size: 60px;
+    font-size: 50px;
 }
 
 #interface {
-    padding: 20px;
     flex-grow: 4;
     display: flex;
     flex-direction: column;
@@ -78,47 +85,51 @@ p {
 }
 
 .row {
-    flex-grow: 1;
     display: flex;
+    justify-content: space-between;
 }
 
 button {
     background-color: orange;
-    border: none;
+    border: 1px solid black;
     border-radius: 20px;
     padding: 5px;
-    margin: 5px;
-    flex-grow: 1;
+    width: 70px;
+    height: 55px;
+    font-size: 18px;
 }
 
 .special-button  {
     background-color: rgb(255, 74, 19);
 }
 
+.top-row {
+    width: 160px;
+}
+
 button:hover {
-    background-color: gray;
+    filter: brightness(.8);
 }
 
 button:active {
-    background: black;
+    filter: brightness(.6);
 }
 
 .footer {
     display: flex;
     background-color: rgba(252, 83, 21, 0.945);
-    align-items: center;
     justify-content: center;
     align-self: stretch;
     padding: 15px;
+    margin: 20px 0px 0px 0px;
 }
 
 #mark {
     display: flex;
     gap: 5px;
-    align-items: center;
     text-decoration: none;
     color: rgb(255, 255, 255);
-    text-shadow: 1px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+    /* text-shadow: 1px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black; */
     font-family: Retro;
     font-size: 18px;
     font-weight: 100;
@@ -127,6 +138,6 @@ button:active {
 
 #github-logo {
     height: 20px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 20px;
 }
