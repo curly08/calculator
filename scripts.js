@@ -177,7 +177,7 @@ function getOperator() {
     } else {
         x = parseFloat(input);
         operator = this.value;
-        displayValue.textContent = operator;
+        // displayValue.textContent = operator;
     }
     opButtons.forEach(item => {
         item.removeEventListener('click', getOperator)
@@ -231,13 +231,15 @@ document.addEventListener('keydown', event => {
     if (event.key === '=') {
         event.preventDefault();
         document.getElementById('Enter').click();
-        document.getElementById('Enter').style.background = 'black';
+        document.getElementById('Enter').style.background = 'brightness(.6)';
+    } else if (event.key === ' ') {
+        event.preventDefault();
     } else {
         keys.forEach(item => {
             if (event.key === item) {
                 event.preventDefault();
                 document.getElementById(item).click();
-                document.getElementById(item).style.background = 'black';
+                document.getElementById(item).style.filter = 'brightness(.6)';
             }
         })
     }
@@ -245,11 +247,11 @@ document.addEventListener('keydown', event => {
 
 document.addEventListener('keyup', event => {
     if (event.key === '=') {
-        document.getElementById('Enter').style.background = '';
+        document.getElementById('Enter').style.filter = '';
     } else {
         keys.forEach(item => {
             if (event.key === item) {
-                document.getElementById(item).style.background = '';
+                document.getElementById(item).style.filter = '';
             }
         })
     }
